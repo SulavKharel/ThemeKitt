@@ -2,6 +2,8 @@
 
 {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
 
+{% assign no_stock_button_class = add-to-cart-form_button--no-stock%}
+
 <img src="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
 
 {% for image in product.images %}
@@ -37,12 +39,16 @@
   <label for="Quantity">Quantity</label>
   <input type="number" id="Quantity" name="quantity" value="1" min="1" class="">
 
-  {% if something = 0 %}
-     <button type="submit" name="add" id="AddToCart" class="add-to-cart-button-disabled" disabled>Add to cart</button>
-  {% else %}
-  <button type="submit" name="add" id="AddToCart">Add to cart</button>
-  {% endif %}
+  {% if product.available %}
 
+    <button type="submit" name="add" id="AddToCart" class="add-to-cart-form_button">Add to cart</button>
+
+  {% else %}
+
+    <button type="submit" name="add" id="AddToCart" class="add-to-cart-form_button add-to-cart-form_button--no-stock">Add to cart</button>
+
+  {% endif %}
 </form>
 
 <div>{{ product.description }}</div>
+{{ 'add_to_cart.js' | asset_url | script_tag }}

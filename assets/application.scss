@@ -1,1 +1,11 @@
 // put your styles here
+.add-to-cart-form_button {
+  color: white;
+  background-color: green;
+  &:hover {
+    background-color: blue;
+  }
+  &.add-to-cart-form_button--no-stock {
+    background-color: rgba(0,0,0,0.1);
+  }
+}
