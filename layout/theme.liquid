@@ -15,9 +15,13 @@
   {% for link in linklists.main-menu.links %}
     {% assign child_list_handle = link.title | handleize %}
     {% if linklists[child_list_handle].links != blank %}
+
       <a href="{{ link.url }}">{{ link.title }}</a>
+
       [{% for childlink in linklists[child_list_handle].links %}
+
         <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+
       {% endfor %}]
     {% else %}
       <a href="{{ link.url }}">{{ link.title }}</a>
@@ -39,5 +43,19 @@
   <main role="main">
     {{ content_for_layout }}
   </main>
+
+
+  <div class="footer">
+    <div class="footer-links">
+      <a href="" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <div class="footer-copyright">
+      Black Rose® All Rights Reserved 2019.
+    </div>
+  </div>
+
+
 </body>
 </html>
