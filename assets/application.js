@@ -109,4 +109,12 @@ const productModal = () => {
  });
 }
 
+document.addEventListener("DOMContentLoaded", function(event) {
+  const randomTitle = document.querySelector('#textsection')
+  if (randomTitle) {
+  console.log(randomTitle.innerText)
+  }
+})
+
+
 productModal();
