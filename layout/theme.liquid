@@ -10,58 +10,74 @@
    <!-- Header hook for plugins -->
   {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
   {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
-  {{ 'https://unpkg.com/sweetalert/dist/sweetalert.min.js' | script_tag }}
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   {{ 'application.scss.css' | asset_url | stylesheet_tag }}
   {{ 'application.js' | asset_url | script_tag }}
   <script src="https://kit.fontawesome.com/fccddab9af.js"></script>
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
+
 <body>
 
-  {% for link in linklists.main-menu.links %}
-    {% assign child_list_handle = link.title | handleize %}
-    {% if linklists[child_list_handle].links != blank %}
+  <div class="container">
+    <div class='nav-flex justify-content-between navbar-container'>
+      {% for link in linklists.main-menu.links %}
+        {% assign child_list_handle = link.title | handleize %}
+        {% if linklists[child_list_handle].links != blank %}
 
-      <a href="{{ link.url }}">{{ link.title }}</a>
+            <a href="{{ link.url }}">{{ link.title }}</a>
 
-      [{% for childlink in linklists[child_list_handle].links %}
+          [{% for childlink in linklists[child_list_handle].links %}
 
-        <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+            <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
 
-      {% endfor %}]
-    {% else %}
-      <a href="{{ link.url }}">{{ link.title }}</a>
-    {% endif %}
-  {% endfor %}
-
-  <a href="/cart">cart</a>
-
-  {% if shop.customer_accounts_enabled %}
-    {% if customer %}
-      <a href="/account">account</a>
-      {{ 'log out'  | customer_logout_link }}
-    {% else %}
-      {{ 'log in ' | customer_login_link }}
-      {{ 'register' | customer_register_link }}
-    {% endif %}
-  {% endif %}
-
-  <main role="main">
-    {{ content_for_layout }}
-  </main>
-
-
-  <div class="footer">
-    <div class="footer-links">
-      <a href="" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="" target="_blank"><i class="fab fa-linkedin"></i></a>
+          {% endfor %}]
+        {% else %}
+          {% if link.title == 'Home' %}
+            <div class='navbar-logo'>
+                <a href="{{ link.url }}"><img src="https://www.gothyka.com/Gothyka_images/produits/rose_noire_geante_alchemy_gothic_rose5.jpg" alt="logo" width="80" height="80"></a>
+            </div>
+        {% else %}
+          <div class=''>
+                <a href="{{ link.url }}"><i class="fas fa-store-alt navbar-product"></i></a>
+          </div>
+        {% endif %}
+        {% endif %}
+      {% endfor %}
+       <div class='navbar-cart align-center'>
+         <a href="/cart" class="cart-counter"><i class="fas fa-cart-plus"></i>( {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }})</a>
+       </div>
+     </div>
     </div>
-    <div class="footer-copyright">
-      Black Rose® All Rights Reserved 2019.
+
+    {% if shop.customer_accounts_enabled %}
+      {% if customer %}
+        <a href="/account">account</a>
+        {{ 'log out'  | customer_logout_link }}
+      {% else %}
+        {{ 'log in ' | customer_login_link }}
+        {{ 'register' | customer_register_link }}
+      {% endif %}
+    {% endif %}
+
+
+    <main role="main">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'text' %}
+
+    <div class="footer">
+      <div class="footer-links">
+        <a href="" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="" target="_blank"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <div class="footer-copyright">
+        Black Rose© all Rights Reserved 2019.
+      </div>
     </div>
   </div>
-
-
 </body>
 </html>

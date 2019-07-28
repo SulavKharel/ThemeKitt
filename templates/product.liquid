@@ -1,4 +1,14 @@
-<div id="product-page">
+<div id="product-page"class="container prod-grid">
+
+  <div id="carouselExampleControls" class="carousel slide carousel-style" data-ride="carousel">
+    <div class="carousel-inner">
+
+      {% for image in product.images %}
+        <div class="{% if image.alt == 'featured' %} carousel-item active {% else %} carousel-item {%endif%}">
+          <img class="d-block w-100" src="{{ image.src | img_url: 'large' }}" alt="{{ image.alt | escape }}">
+        </div>
+      {% endfor %}
+    </div>
 
   {% assign current_variant = product.selected_or_first_available_variant %}
 
@@ -22,7 +32,7 @@
   </div>
 
 
-
+ <!-- javascript -->
    {% assign product_quantity = product.variants[0].inventory_quantity %}
 
     <div class='prod-quantity' style="display: none;">{{ product.variants[0].inventory_quantity }}</div>

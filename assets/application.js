@@ -1,7 +1,7 @@
 // Put your applicaiton javascript her
 
 const productModal = () => {
-  console.log('Im being fired')
+  console.log('Bazinga!!')
   document.addEventListener("DOMContentLoaded", function(event) {
 
   const prodPageId = document.getElementById('product-page')
