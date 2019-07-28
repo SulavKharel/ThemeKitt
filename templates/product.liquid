@@ -1,56 +1,77 @@
-{% assign current_variant = product.selected_or_first_available_variant %}
+  {% assign current_variant = product.selected_or_first_available_variant %}
 
-{% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+  {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
 
-{% unless product.available %}
-  {% assign no_stock_button_class = add-to-cart-form_button--no-stock%}
-{% endunless %}
+  {% unless product.available %}
+    {% assign no_stock_button_class = add-to-cart-form_button--no-stock%}
+  {% endunless %}
 
-<img src="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
+  <img src="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
 
-{% for image in product.images %}
+  {% for image in product.images %}
 
-  <a href="{{ image.src | img_url: 'large' }}">
-    <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
-  </a>
+    <a href="{{ image.src | img_url: 'large' }}">
+      <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+    </a>
 
-{% endfor %}
+  {% endfor %}
+  <div>
+    <h1>{{ product.title }}</h1>
+  </div>
 
-<h1>{{ product.title }}</h1>
 
-<form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
-  <select name="id" id="productSelect">
-    {% for variant in product.variants %}
-      {% if variant.available %}
+ <!-- javascript -->
+   {% assign product_quantity = product.variants[0].inventory_quantity %}
 
-        <option value="{{ variant.id }}">
-          {{ variant.title }} - {{ variant.price | money_with_currency }}
-        </option>
+    <div class='prod-quantity' style="display: none;">{{ product.variants[0].inventory_quantity }}</div>
 
-      {% else %}
+    {% if cart.item_count > 0 %}
+      <div class='cart-quantity' style="display: none;" data-quantity="{{ cart.item_count }}">{{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}</div>
+      <div class='cart-data' style="display: none;">
+      {% for item in cart.items %}
+       <p class='cart-items'>{{ item.title }} | Quantity: {{ item.quantity }}</p>
+      {% endfor %}
+        <p class='cart-total-price'>Total: {{ cart.total_price | money }}</p>
+      </div>
+    {% else %}
+      <div class='cart-data' style="display: none;" data-quantity="{{ cart.item_count }}">
+      <p class='cart-quantity'>No items</p>
+      </div>
+    {% endif %}
 
-        <option disabled="disabled">
-          {{ variant.title }} - sold out
-        </option>
+  <div>
+    <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+      <select name="id" id="productSelect">
+        {% for variant in product.variants %}
+          {% if variant.available %}
 
-      {% endif %}
-    {% endfor %}
-  </select>
+            <option value="{{ variant.id }}">
+              {{ variant.title }} - {{ variant.price | money_with_currency }}
+            </option>
 
-  {{ current_variant.price | money }}
-  <label for="Quantity">Quantity</label>
-  <input type="number" id="Quantity" name="quantity" value="1" min="1" class="">
+          {% else %}
 
-  {% if product.available %}
+            <option disabled="disabled">
+              {{ variant.title }} - sold out
+            </option>
 
-    <button type="submit" name="add" id="AddToCart" class="add-to-cart-form_button">Add to cart</button>
+          {% endif %}
+        {% endfor %}
+      </select>
 
-  {% else %}
+      {{ current_variant.price | money }}
+      <label for="Quantity">quantity</label>
+      <input type="number" id="Quantity" name="quantity" value="1" min="1">
+      <button type="submit" name="add" id="AddToCart" class="add-to-cart-form__button {{ no_stock_button_class }}">
+        {% if stock < 5 %}
+          Low stock
+        {% else %}
+          Add to cart
+        {% endif %}
+      </button>
+    </form>
 
-    <button type="submit" name="add" id="AddToCart" class="add-to-cart-form_button add-to-cart-form_button--no-stock">Add to cart</button>
-
-  {% endif %}
-</form>
-
-<div>{{ product.description }}</div>
-{{ 'add_to_cart.js' | asset_url | script_tag }}
+    <div>{{ product.description }}</div>
+    {{ 'add_to_cart.js' | asset_url | script_tag }}
+  </div>
+</div>
