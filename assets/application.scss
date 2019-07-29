@@ -10,7 +10,6 @@
   }
 }
 
-/*  navbar style */
 
 #sad-cart img {
   width: 320px;
@@ -23,6 +22,8 @@
   width: 100px;
   border-radius: 50%;
 }
+
+/*  navbar style */
 
 .navbar-product {
   text-decoration: none;
@@ -69,6 +70,17 @@
 
 
 //product-card
+
+.card-size{
+  width: 400px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.card-img-top{
+  max-height: 400px;
+}
+
 .card-trip {
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -98,6 +110,15 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  flex-grow: 1;
+}
+
+.card-trip-infos p{
+  color: #81A0C8
+}
+
+.card-trip-infos h2{
+  color: #21a179
 }
 
 //cards
@@ -109,7 +130,7 @@
 }
 
 .card-gap {
-  margin: 10px 50px
+  margin: 10px 69px
 }
 
 .prod-price {
