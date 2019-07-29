@@ -1,3 +1,48 @@
+// clip path css
+.clip-container {
+}
+
+.inner {
+  margin: 0 auto;
+  background-color: rgb(7,218,165);
+  padding: 1em;
+  border-radius: 10px;
+  width: 350px;
+  clip-path: circle(10% at 91% 25%);
+  transition: all .5s ease-in-out;
+  cursor: pointer;
+
+
+  &:hover {
+    clip-path: circle(75%);
+    background-color: #00B6FF;
+  }
+
+  .clip-i {
+    float: right;
+    color: white;
+    font-weight: bold;
+    transition: color .5s;
+    position:relative;
+    margin-right: 4%;
+  }
+
+  &:hover .clip-i{
+    color: rgba(255,255,255,0);
+  }
+
+  h1{
+    color: white;
+    margin: 0;
+  }
+
+  p{
+    color:white;
+    font-size: 0.8em;
+  }
+}
+
+
 // put your styles here
 .add-to-cart-form_button {
   color: white;
