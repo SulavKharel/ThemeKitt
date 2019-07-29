@@ -15,9 +15,20 @@ html {
   color: #81A0C8
 }
 
-.info-card h3,h2 {
+.info-card h3,h2,a {
   color: #21a179
 }
+
+.card-link {
+  color: #21a179;
+
+  &:hover .card-trip-pricing{
+    font-size: 2em;
+    color: #8F4841
+  }
+}
+
+
 
 #textsection {
   color: #81a0c8;
@@ -163,6 +174,7 @@ html {
 .product-title-col a {
   font-size: 50px;
   color: #81a0c7;
+
   &:hover {
   opacity: 0.5;
   color: #81a0c7;
@@ -396,6 +408,17 @@ html {
     color: #21a179;
     font-size: 0.8em
   }
+
+  .info-card {
+    color: #21a179;
+    font-size: 0.8em
+  }
+
+  .info-card h3,h2{
+    color: #21a179;
+    font-size: 1.5em
+  }
+
 
   .card-img-top {
     max-height: 300px;
