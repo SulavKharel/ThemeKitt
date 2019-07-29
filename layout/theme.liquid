@@ -35,12 +35,12 @@
           {% endfor %}]
         {% else %}
           {% if link.title == 'Home' %}
-            <div class='navbar-logo'>
-                <a href="{{ link.url }}"><img src="https://www.gothyka.com/Gothyka_images/produits/rose_noire_geante_alchemy_gothic_rose5.jpg" alt="logo" width="80" height="80"></a>
+            <div class=''>
+                <a href="{{ link.url }}"><i class="fas fa-store-alt navbar-product"></i></a>
             </div>
         {% else %}
-          <div class=''>
-                <a href="{{ link.url }}"><i class="fas fa-store-alt navbar-product"></i></a>
+          <div class='navbar-logo'>
+                <a href="{{ link.url }}"><img src="https://www.gothyka.com/Gothyka_images/produits/rose_noire_geante_alchemy_gothic_rose5.jpg" alt="logo" width="80" height="80"></a>
           </div>
         {% endif %}
         {% endif %}
