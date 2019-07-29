@@ -11,7 +11,7 @@
    <div class="container">
      <div class="cards card-gap">
       {% for product in collections.frontpage.products limit:4 %}
-        <div class="card card-size">
+        <div class="card card-size mx-3">
           <a href="{{ product.url | within: collection }}">
             <img class='card-image-top' src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
           </a>
@@ -26,8 +26,8 @@
               {% unless product.available %}<br><strong>sold out</strong>{% endunless %}</h3>
           </div>
         </div>
+      {% endfor %}
     </div>
-  {% endfor %}
 
   <div id="product-page">
 
