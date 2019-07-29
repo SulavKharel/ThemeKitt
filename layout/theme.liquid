@@ -20,7 +20,7 @@
 
 <body>
 
-  <div class="container">
+  <div class="home-container">
     <div class='nav-flex justify-content-between navbar-container'>
       {% for link in linklists.main-menu.links %}
         {% assign child_list_handle = link.title | handleize %}
@@ -62,22 +62,24 @@
     {% endif %}
 
 
-    <main role="main">
+    <main role="main" class="main">
       {{ content_for_layout }}
     </main>
 
     {% section 'text' %}
 
-    <div class="footer">
-      <div class="footer-links">
-        <a href="" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="" target="_blank"><i class="fab fa-linkedin"></i></a>
+    {% if template == 'index' %}
+      <div class="footer">
+        <div class="footer-links">
+          <a href="" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="footer-copyright">
+          Black Rose© all Rights Reserved 2019.
+        </div>
       </div>
-      <div class="footer-copyright">
-        Black Rose© all Rights Reserved 2019.
-      </div>
-    </div>
+    {% endif %}
   </div>
 </body>
 </html>

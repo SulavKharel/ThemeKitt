@@ -1,3 +1,7 @@
+html {
+  height: 100%;
+}
+
 // clip path css
 .clip-container {
 }
@@ -11,6 +15,7 @@
   clip-path: circle(10% at 91% 25%);
   transition: all .5s ease-in-out;
   cursor: pointer;
+
 
 
   &:hover {
@@ -34,6 +39,7 @@
   h1{
     color: white;
     margin: 0;
+    text-align: center;
   }
 
   p{
@@ -55,6 +61,13 @@
   }
 }
 
+#textsection {
+  color: #81a0c8;
+  text-align: center;
+  font-size: 35px;
+  margin-top: 10px;
+  margin-bottom: 100px;
+}
 
 #sad-cart img {
   width: 320px;
@@ -245,12 +258,19 @@
   .cards {
     grid-template-columns: 1fr;
   }
+
+  .home-container {
+    max-width: 540px;
+  }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .cards {
     grid-template-columns: 1fr 1fr;
+  }
+  .home-container {
+    max-width: 720px;
   }
 }
 
@@ -259,12 +279,19 @@
   .cards {
     grid-template-columns: 1fr 1fr 1fr;
   }
+  .home-container {
+    max-width: 960px;
+  }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .cards {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .home-container {
+    max-width: 1140px;
   }
 }
 
@@ -280,11 +307,23 @@
   .cart-info {
     grid-template-columns: 1fr;
   }
+
+  .home-container {
+  }
 }
 
-.container{
+.home-container{
   min-height: 100%;
-  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.main {
+  overflow: auto;
+  padding-bottom: 100px;
 }
 
 .col-container {
@@ -305,6 +344,8 @@
   height: 100px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
+  margin-top: -100px;
+  clear: both;
 }
 .footer-links {
   display: flex;
