@@ -121,6 +121,18 @@ html {
 
 //product-card
 
+
+.product-title-blue {
+  font-size: 20px;
+  text-decoration: none;
+  color: #81a0c8;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .prod-price {
   font-size: 25px;
   color: #8F4841;
@@ -162,36 +174,51 @@ html {
   max-height: 400px;
 }
 
+.card-price {
+  color: #8F4841;
+  font-size: 20px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
 .card-trip {
+  overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .card-trip > img {
-  height: 200px;
+  height: 100px;
+  width: 100%;
   object-fit: cover;
 }
 
 .card-trip h2 {
-  font-size: 16px;
+  font-size: 2.5rem;
   font-weight: bold;
   margin: 0;
+  text-decoration:none;
+
+  &:hover a{
+  text-decoration:none;
+  color:#81a0c8;
+  font-size: 2.6rem;
+  }
 }
 
 .card-trip p {
-  font-size: 12px;
+  font-size: 16px;
   opacity: .7;
   margin: 0;
 }
 
 
-.card-trip-infos {
-  position: relative;
+.card-trip .card-trip-infos {
   padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  flex-grow: 1;
+  position: relative;
 }
 
 .card-trip-infos p {
@@ -223,7 +250,17 @@ html {
   }
 }
 
+.card-image {
+  height: 360px;
+}
+
 //cart
+.size {
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: bold;
+}
+
 .title {
   color: #21a179;
   text-align: center;
@@ -238,6 +275,26 @@ html {
   &:hover {
     color: #81A0C8;
   }
+}
+
+.header {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  background: rgba(0,0,0,0.2);
+}
+
+.header-info {
+  color: white;
+  text-align: center;
+  background: rgba(0,0,0,0.2);
+  padding-right: 100px;
+  padding-left: 100px;
+}
+
+.remove-button {
+  margin-left: 105px;
+  margin-right: 105px;
 }
 
 //banner
