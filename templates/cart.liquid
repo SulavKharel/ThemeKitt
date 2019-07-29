@@ -1,6 +1,6 @@
 <div class="container">
   {% if cart.item_count > 0 %}
-    <h1 class="cart-title">Your Cart</h1>
+    <h1 class="title">Your Cart</h1>
 
     <form action="/cart" method="post" novalidate>
       <table>
@@ -8,26 +8,27 @@
           {% for item in cart.items %}
             <tr class="cart-info row">
               <td class="col">
-                <p class="cart-headers">Product</p>
+                <p class="header">Product</p>
                 <a href="{{ item.url | within: collections.all }}">
                   <img class="cart-prod-image" src="{{ item | img_url: 'large' }}" alt="{{ item.title | escape }}">
                 </a>
               </td>
 
                 <td class="d-flex align-items-start flex-column bd-highlight mb-3 col cart-prod-info">
-                  <p class="cart-headers-info">Information</p>
+                  <p class="header-info">Information</p>
                   <a class="mb-auto p-2 bd-highlight col product-title-blue" href="{{ item.url }}">{{ item.product.title }}</a>
-                  <p class="p-2 bd-highlight col ">{% if item.variant.title == 'Default Title' %} Unique Style {% else %} {{ item.variant.title }} {% endif %} </p>
+
+                  <p class="p-2 bd-highlight col size">{% if item.variant.title == 'Default Title' %} Unique Style {% else %} {{ item.variant.title }} {% endif %} </p>
                   <a class="p-2 bd-highlight btn btn-danger remove-button" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">Remove</a>
                 </td>
 
               <td class="cart-price col align-items-end">
-                <p class="cart-headers">Price</p>
+                <p class="header">Price</p>
                 <p class="price-centered">{{ item.price | money }}</p>
               </td>
 
               <td class="cart-quantity col">
-                <p class="cart-headers">Quantity</p>
+                <p class="header">Quantity</p>
                 <input class="price-centered form-control" type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0">
               </td>
 

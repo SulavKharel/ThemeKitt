@@ -4,28 +4,25 @@
 <div class='container'>
   {% for product in collection.products %}
 
-    <div class='row'>
-      <div class="col">
-        <div class='d-flex justify-content-between col-container'>
-          <a href="{{ product.url | within: collection }}">
-            <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
-          </a>
-          <div class='product-info'>
-            <div class='product-title-col'>
-              <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-            </div>
-            <div class='prod-price'>
-              {% if product.available %}
-              {{ product.price | money }}
-              {% else %}
-              SOlD OUT
-              {% endif %}
-            </div>
-          </div>
-        </div>
-
-     </div>
+  <div class="card-trip m-3">
+     <a href="{{ product.url | within: collection }}">
+        <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+      </a>
+    <div class="card-trip-infos">
+      <div>
+        <h2><a href="{{ product.url | within: collection }}">{{ product.title }}</a></h2>
+        <p>{{ product.description }}</p>
+      </div>
+      <h2 class="card-trip-pricing">
+        {% if product.available %}
+        {{ product.price | money }}
+        {% else %}
+        SOlD OUT
+        {% endif %}
+      </h2>
     </div>
+  </div>
+
   {% else %}
     <h2 class="title">Opps no results :(</h2>
   {% endfor %}
