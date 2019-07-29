@@ -8,6 +8,27 @@
 
 <div class="container title">Featured</div>
 
+   <div class="container">
+     <div class="cards card-gap">
+      {% for product in collections.frontpage.products limit:4 %}
+        <div class="card card-size">
+          <a href="{{ product.url | within: collection }}">
+            <img class='card-image-top' src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+          </a>
+          <div class="info-card">
+            <div>
+              <h3>
+                <a class="card-link" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+              </h3>
+              <p>{{ product.description }}</p>
+            </div>
+            <h3 class="card-trip-pricing">{{ product.price | money }}
+              {% unless product.available %}<br><strong>sold out</strong>{% endunless %}</h3>
+          </div>
+        </div>
+    </div>
+  {% endfor %}
+
   <div id="product-page">
 
    <div class="cards card-gap">
@@ -92,21 +113,6 @@
 
     </div>
   </div>
-   <div class="container">
-     <div class="cards">
-      {% for product in collections.frontpage.products limit:4 %}
-        <div class="card-category">
-          <a href="{{ product.url | within: collection }}">
-            <img class='card-image' src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
-          </a>
 
-          <div class="prod-price">
-            <a class="float-left title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
-            <h6 class="float-right card-price">{{ product.price | money }}
-              {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
-            </h6>
-        </div>
-      </div>
-    {% endfor %}
-  </div>
+
 </div>

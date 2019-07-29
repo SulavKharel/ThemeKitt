@@ -15,9 +15,20 @@ html {
   color: #81A0C8
 }
 
-.info-card h3,h2 {
+.info-card h3,h2,a {
   color: #21a179
 }
+
+.card-link {
+  color: #21a179;
+
+  &:hover .card-trip-pricing{
+    font-size: 2em;
+    color: #8F4841
+  }
+}
+
+
 
 #textsection {
   color: #81a0c8;
